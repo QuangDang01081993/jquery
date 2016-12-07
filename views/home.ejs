@@ -4,13 +4,45 @@
     <meta charset="utf-8">
     <title>Jquery demo</title>
     <script src ='jquery-3.1.1.min.js'></script>
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript">
+      function getInfo() {
+        console.log('hello word');
+      }
       $(document).ready(()=>{
-        alert('hello jquery');
+        $("[name='click']").on('click',()=>{
+          $("[name='username']").val('');
+        });
+        $('.item').on('click',function(){
+          $('.item').removeClass('active');
+          $(this).addClass('active');
+        });
+        $("[name='addIndex']").on('click',function(){
+          var num = parseInt(  $(this).text());
+          $(this).text(num + 1);
+        });
+
+        $('#aAbout').on('click',function(){
+          $.get('/about',data=>{
+            console.log(data);
+          });
+        });
       });
     </script>
   </head>
   <body>
-
+    <a href="#" id="aAbout">about</a>
+    <p>Khao pham training</p>
+    <input type="text" name="username" value="">
+    <br><br>
+    <button type="button" name="button" onclick="getInfo()">Click</button>
+    <button type="button" name="click" class="click">Jquey</button>
+    <ul>
+      <li class="item">Android</li>
+      <li class="item">ios</li>
+      <li class="item">nodejs</li>
+      <li class="item">reactjs</li>
+    </ul>
+    <button type="button" name="addIndex">0</button>
   </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello</title>
+    <script src ='jquery-3.1.1.min.js'></script>
+    <script type="text/javascript">
+      $(document).ready(()=>{
+        $("[name='submit']").on('click',function(){
+            var text = $("[name='sayHello']").val();
+            $.get(`/chao/${text}`,data =>{
+              alert(data);
+            });
+        });
+        $("[name='hello']").on('click',function(){
+          var ten = $("[name='ten']").text();
+          var tuoi = $("[name='tuoi']").text();
+          $.post('/hello',{ten,tuoi},data=>{
+            alert(data);
+          })
+        });
+      });
+    </script>
+  </head>
+  <body>
+      <input type="text" name="sayHello" value="">
+      <input type="submit" name="submit" value="submit">
+      <br><br><br>
+      <input type="text" name="ten" value="">
+      <input type="text" name="tuoi" value="">
+      <input type="submit" name="hello" value="hello">
+    </form
+  </body>
+</html>
